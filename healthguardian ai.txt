@@ -1,0 +1,47 @@
+Project Proposal: HealthGuardian AI
+Type: Supervisor-Controlled Multi-Agent AI Medical Triage System
+Tech Stack: FastAPI (backend API), LangGraph (multi-agent orchestration), LLM (e.g., GPT/Claude/Llama), PostgreSQL (structured logging & state)
+Overview:
+HealthGuardian AI is a backend AI system designed to process natural language user symptom descriptions. It extracts structured symptoms, assesses risk severity (Low, Medium, High, Critical), routes to appropriate medical departments, and generates safe, non-diagnostic guidance only. A central Supervisor Agent orchestrates four specialized worker agents (Symptom Extraction, Risk Assessment, Department Routing, Advice Generation), validates outputs with confidence scoring, triggers up to 2 retries on low-quality responses, overrides if needed, and immediately escalates life-threatening cases (e.g., chest pain + breathing difficulty) with emergency instructions like "Call 1122 now".
+Important Safety Note:
+This is NOT a diagnostic tool. It provides informational triage guidance only. Every response includes a strong disclaimer: "This is guidance based on symptoms — always consult a qualified doctor or emergency services in critical cases. Not a substitute for professional medical advice."
+Key Features:
+
+Multi-agent workflow powered by LangGraph with strict Supervisor control for reliability.
+Confidence-based evaluation + retry mechanism (max 2 retries) to minimize errors/hallucinations.
+Automatic emergency escalation for critical symptoms.
+Full audit logging: user queries, agent responses, confidence scores, retries, supervisor decisions, escalation flags, timestamps.
+JWT-based authentication + stateless, scalable FastAPI architecture.
+Performance target: Average response time < 5 seconds.
+Graceful error handling (LLM timeouts, DB issues, etc.).
+Deployable in Docker with monitoring/audit capabilities.
+
+Outcome / Goal:
+A production-grade proof-of-concept backend demonstrating safe, reliable multi-agent AI orchestration in a sensitive domain like medical triage. Ideal for learning advanced agentic AI patterns, prompt engineering, and building trustworthy healthcare-adjacent systems.
+
+
+
+
+
+
+
+
+
+
+healthguardian_ai/
+│
+├─ app/
+│ ├─ main.py # FastAPI entrypoint
+│ ├─ database.py # Database connection & session
+│ ├─ models.py # All SQLAlchemy models
+│ ├─ schemas.py # Pydantic schemas for validation
+│ ├─ routers/
+│ │ ├─ user.py # User endpoints
+│ │ ├─ cases.py # PatientCase endpoints
+│ │ └─ agents.py # Agent execution & supervisor endpoints
+│ └─ services/
+│ ├─ supervisor.py # Supervisor logic
+│ └─ agent_execution.py # Worker agent handling
+│
+├─ requirements.txt # Dependencies
+└─ .env # API keys, DB URL, JWT secret
