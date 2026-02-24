@@ -18,30 +18,3 @@ Deployable in Docker with monitoring/audit capabilities.
 
 Outcome / Goal:
 A production-grade proof-of-concept backend demonstrating safe, reliable multi-agent AI orchestration in a sensitive domain like medical triage. Ideal for learning advanced agentic AI patterns, prompt engineering, and building trustworthy healthcare-adjacent systems.
-
-
-
-
-
-
-
-
-
-
-healthguardian_ai/
-│
-├─ app/
-│ ├─ main.py # FastAPI entrypoint
-│ ├─ database.py # Database connection & session
-│ ├─ models.py # All SQLAlchemy models
-│ ├─ schemas.py # Pydantic schemas for validation
-│ ├─ routers/
-│ │ ├─ user.py # User endpoints
-│ │ ├─ cases.py # PatientCase endpoints
-│ │ └─ agents.py # Agent execution & supervisor endpoints
-│ └─ services/
-│ ├─ supervisor.py # Supervisor logic
-│ └─ agent_execution.py # Worker agent handling
-│
-├─ requirements.txt # Dependencies
-└─ .env # API keys, DB URL, JWT secret
