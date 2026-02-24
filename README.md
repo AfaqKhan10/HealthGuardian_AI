@@ -38,3 +38,12 @@
 ```bash
 git clone https://github.com/YourUsername/HealthGuardian_AI.git
 cd HealthGuardian_AI
+
+
+Step 2: Create virtual environment
+python -m venv venv
+.\venv\Scripts\activate   # Windows
+
+
+Step 3: Install dependencies
+pip install -r requirements.txt
