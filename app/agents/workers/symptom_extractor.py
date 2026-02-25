@@ -12,8 +12,8 @@ from app.agents.state import TriageState
 # LLM setup (Groq)
 llm = ChatGroq(
     groq_api_key=settings.GROQ_API_KEY,
-    model_name="llama-3.3-70b-versatile",  # ya "mixtral-8x7b-32768" waghera jo pasand ho
-    temperature=0.0,                        # structured output ke liye low temperature best
+    model_name="llama-3.3-70b-versatile", 
+    temperature=0.0,                       
     max_tokens=600,
 )
 
@@ -52,7 +52,6 @@ def symptom_extractor_node(state: TriageState) -> TriageState:
         # LLM call karo
         extracted = chain.invoke({"user_query": user_query})
 
-        # Validation (optional – agar LLM galat format de to fallback)
         if not isinstance(extracted, dict) or "symptoms" not in extracted:
             extracted = {
                 "symptoms": [],
@@ -77,14 +76,12 @@ def symptom_extractor_node(state: TriageState) -> TriageState:
         {"role": "assistant", "content": f"Symptom Extractor output: {json.dumps(extracted, ensure_ascii=False)}"}
     ]
 
-    # Optional: confidence score supervisor ke liye add kar sakte ho (abhi simple)
     updated_state["confidence_scores"] = updated_state.get("confidence_scores", {})
-    updated_state["confidence_scores"]["symptom_extractor"] = 0.85  # dummy – baad mein real logic se
+    updated_state["confidence_scores"]["symptom_extractor"] = 0.85  
 
     return updated_state
 
 
-# Quick test (file ko direct run kar ke check kar sakte ho)
 if __name__ == "__main__":
     test_state = TriageState(
         messages=[],
