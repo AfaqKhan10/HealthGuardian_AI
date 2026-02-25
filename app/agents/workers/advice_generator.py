@@ -11,7 +11,7 @@ from app.agents.state import TriageState
 llm = ChatGroq(
     groq_api_key=settings.GROQ_API_KEY,
     model_name="llama-3.3-70b-versatile",
-    temperature=0.2,  # thora creative advice ke liye (lekin safe)
+    temperature=0.2,  
     max_tokens=500,
 )
 
