@@ -7,17 +7,17 @@ from langchain_core.messages import BaseMessage
 class TriageState(TypedDict):
     """Shared state jo sab agents ke beech pass hota rahega"""
     
-    messages: Annotated[List[BaseMessage], add_messages]  # chat history / messages jo LLM ko jaate hain
+    messages: Annotated[List[BaseMessage], add_messages]  
     
-    user_id: int                          # kis user ka case hai (JWT se aayega baad mein)
-    user_query: str                       # raw user input (symptoms ki baat)
+    user_id: int                          
+    user_query: str                       
     
-    extracted_symptoms: Optional[Dict] = None     # symptom_extractor se aayega, e.g. {"symptoms": ["headache", "fever"]}
-    risk_level: Optional[str] = None              # "LOW", "MEDIUM", "HIGH", "CRITICAL"
-    escalation_flag: bool = False                 # life-threatening case to true
-    recommended_department: Optional[str] = None  # "Emergency", "Cardiology", etc.
-    final_advice: Optional[str] = None            # safe advice jo user ko dikhega
+    extracted_symptoms: Optional[Dict] = None     
+    risk_level: Optional[str] = None              
+    escalation_flag: bool = False                 
+    recommended_department: Optional[str] = None 
+    final_advice: Optional[str] = None            
     
-    confidence_scores: Dict[str, float] = {}      # har agent ka score, e.g. {"symptom_extractor": 0.92}
-    retry_count: int = 0                          # current retry count (supervisor ke liye)
-    supervisor_decision: Optional[str] = None     # "approved", "retry", "override", "escalated"
+    confidence_scores: Dict[str, float] = {}      
+    retry_count: int = 0                         
+    supervisor_decision: Optional[str] = None     
