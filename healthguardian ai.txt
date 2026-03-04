@@ -18,4 +18,3 @@ Deployable in Docker with monitoring/audit capabilities.
 
 Outcome / Goal:
 A production-grade proof-of-concept backend demonstrating safe, reliable multi-agent AI orchestration in a sensitive domain like medical triage. Ideal for learning advanced agentic AI patterns, prompt engineering, and building trustworthy healthcare-adjacent systems.
-
