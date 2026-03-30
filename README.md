@@ -35,7 +35,9 @@
 - PostgreSQL installed & running
 - Groq API key[](https://console.groq.com)
 
-
+### Step 1: Clone the repo
+git clone https://github.com/YourUsername/HealthGuardian_AI.git
+cd HealthGuardian_AI
 
 
 Step 2: Create virtual environment
