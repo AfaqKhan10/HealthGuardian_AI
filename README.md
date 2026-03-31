@@ -43,6 +43,5 @@ cd HealthGuardian_AI
 python -m venv venv
 .\venv\Scripts\activate   # Windows
 
-
 Step 3: Install dependencies
 pip install -r requirements.txt
